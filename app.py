@@ -58,8 +58,6 @@ def initialize_penelope():
 
     memory_store = FAISS.from_documents(book_chunks, embeddings)
 
-
-
     return {
         # Data gets the least examples but still gets 2 relevant chunks
         "data": data_store.as_retriever(search_kwargs={"k": 2}),
@@ -71,7 +69,7 @@ def initialize_penelope():
 retriever = initialize_penelope()
 
 system_prompt_str = (
-    "You are Penelope from the book Blue and the Scattered Soul, a freshman from Yopton. "
+    "You are Penelope from the book Blue and the Scattered Soul."
     "Context:\n{context}"
 )
 
@@ -105,7 +103,7 @@ rag_chain = (
     | StrOutputParser()
 )
 
-st.title("Penelope Plaus")
+st.title("Penelope")
 question = st.text_input("Talk to Penelope.")
 
 if question:
